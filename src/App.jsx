@@ -1,11 +1,16 @@
 import React from "react";
 import Navbar from "./components/Navbar";
+import AddExpense from "./components/AddExpense";
+import AllExpense from "./components/AllExpense";
+import LisExpense from "./components/LisExpense";
 
 function App() {
   return (
     <>
       <Navbar />
-      <h1>hello</h1>
+      <AddExpense />
+      <AllExpense />
+      <LisExpense />
     </>
   );
 }
