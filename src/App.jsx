@@ -8,9 +8,11 @@ function App() {
   return (
     <>
       <Navbar />
-      <AddExpense />
-      <AllExpense />
-      <LisExpense />
+      <main className="w-[80%] mx-auto">
+        <AddExpense />
+        {/* <AllExpense />
+        <LisExpense /> */}
+      </main>
     </>
   );
 }
