@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import AddExpense from "./components/AddExpense";
 import AllExpense from "./components/AllExpense";
-import LisExpense from "./components/LisExpense";
+import LisExpense from "./components/ListExpense";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <main className="w-[80%] mx-auto">
         <AddExpense />
         <AllExpense />
-        {/* <LisExpense /> */}
+        <LisExpense />
       </main>
     </>
   );
