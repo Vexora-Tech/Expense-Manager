@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "./components/Navbar";
 import AddExpense from "./components/AddExpense";
 import AllExpense from "./components/AllExpense";
@@ -10,8 +9,8 @@ function App() {
       <Navbar />
       <main className="w-[80%] mx-auto">
         <AddExpense />
-        {/* <AllExpense />
-        <LisExpense /> */}
+        <AllExpense />
+        {/* <LisExpense /> */}
       </main>
     </>
   );

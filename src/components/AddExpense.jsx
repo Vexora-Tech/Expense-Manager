@@ -88,7 +88,7 @@ function AddExpense() {
             <div className="mb-3">
               <button
                 type="submit"
-                className="w-40 text-shadow-2xs font-sans shrink py-2 rounded-md text-white bg-linear-to-r from-pink-400 via-indigo-300 to-purple-200"
+                className="w-40 text-shadow-2xs font-sans shrink py-2 rounded text-white bg-linear-to-r from-pink-400 via-indigo-300 to-purple-200"
               >
                 Add Expense
               </button>
