@@ -1,7 +1,41 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { mainContext } from "../contexts/mainContextAPI";
 
 function AddExpense() {
   const [hide, setHide] = useState(true);
+
+  const { allExpense, setAllExpense } = useContext(mainContext);
+
+  const handleSubmmit = (event) => {
+    event.preventDefault();
+
+    try {
+      const formData = new FormData(event.target);
+      const price = formData.get("price") || 0;
+      const description = formData.get("description") || "";
+      const purpose = formData.get("purpose") || "";
+
+      if (!description || !purpose || price <= 0) {
+        alert("fill the details");
+        return;
+      }
+
+      const exp = {
+        price,
+        purpose,
+        description,
+        created_at: new Date(),
+        id: Date.now(),
+      };
+
+      setAllExpense([...allExpense, exp]);
+      alert("expense added");
+      event.target.reset();
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
   return (
     <>
       <div className="flex justify-end pt-6">
@@ -14,46 +48,48 @@ function AddExpense() {
       </div>
       {!hide && (
         <div className="py-3">
-          <form action="">
+          <form onSubmit={handleSubmmit}>
             <div className="mb-3">
-              <label htmlFor="price" name="price">
-                Price in ₹ Ruppes
-              </label>
+              <label htmlFor="price">Price in ₹ Rupees</label>
               <input
                 id="price"
                 name="price"
                 type="number"
                 className="w-full py-2 border border-zinc-400 outline-none px-3 rounded"
                 placeholder="Enter Price"
+                required
               />
             </div>
+
             <div className="mb-3">
-              <label htmlFor="description" name="description">
-                description
-              </label>
+              <label htmlFor="description">Description</label>
               <textarea
                 id="description"
                 name="description"
-                type="number"
                 className="w-full py-2 border border-zinc-400 outline-none px-3 rounded"
                 placeholder="Enter description"
+                required
               />
             </div>
+
             <div className="mb-3">
-              <label htmlFor="description" name="description">
-                Propose
-              </label>
+              <label htmlFor="purpose">Purpose</label>
               <select
                 className="w-full py-2 border border-zinc-400 outline-none px-3 rounded"
-                name="propose"
-                id=""
+                name="purpose"
+                id="purpose"
+                required
               >
                 <option value="expense">Expense</option>
                 <option value="income">Income</option>
               </select>
             </div>
+
             <div className="mb-3">
-              <button className="w-40 text-shadow-2xs font-sans shrink py-2 rounded-md text-white bg-linear-to-r from-pink-400 via-indigo-300 to-purple-200">
+              <button
+                type="submit"
+                className="w-40 text-shadow-2xs font-sans shrink py-2 rounded-md text-white bg-linear-to-r from-pink-400 via-indigo-300 to-purple-200"
+              >
                 Add Expense
               </button>
             </div>
