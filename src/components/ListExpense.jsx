@@ -2,7 +2,14 @@ import React, { useContext } from "react";
 import { mainContext } from "../contexts/mainContextAPI";
 
 function ListExpense() {
-  const { allExpense } = useContext(mainContext);
+  const { allExpense, setAllExpense } = useContext(mainContext);
+
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this expense?")) {
+      const updatedExpenses = allExpense.filter((expense) => expense.id !== id);
+      setAllExpense(updatedExpenses);
+    }
+  };
 
   return (
     <>
