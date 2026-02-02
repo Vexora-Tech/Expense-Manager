@@ -15,6 +15,7 @@ function ListExpense() {
         icon: "success",
         confirmButtonText: "Ok",
       });
+      localStorage.setItem("expense", JSON.stringify(new_expense));
     }
   };
 

@@ -28,8 +28,10 @@ function AddExpense() {
         created_at: new Date(),
         id: Date.now(),
       };
+      const new_expense = [...allExpense, exp];
 
-      setAllExpense([...allExpense, exp]);
+      setAllExpense(new_expense);
+      localStorage.setItem("expense", JSON.stringify(new_expense));
       Swal.fire({
         title: "success!",
         text: "Expense Added Successfully",
