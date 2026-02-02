@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { mainContext } from "../contexts/mainContextAPI";
+import Swal from "sweetalert2";
 
 function ListExpense() {
   const { allExpense, setAllExpense } = useContext(mainContext);
@@ -8,6 +9,12 @@ function ListExpense() {
     if (window.confirm("Are you sure you want to delete this expense?")) {
       const updatedExpenses = allExpense.filter((expense) => expense.id !== id);
       setAllExpense(updatedExpenses);
+      Swal.fire({
+        title: "success!",
+        text: "Expense delete successfully",
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
     }
   };
 

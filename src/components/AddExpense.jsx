@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { mainContext } from "../contexts/mainContextAPI";
+import Swal from "sweetalert2";
 
 function AddExpense() {
   const [hide, setHide] = useState(true);
@@ -29,7 +30,12 @@ function AddExpense() {
       };
 
       setAllExpense([...allExpense, exp]);
-      alert("expense added");
+      Swal.fire({
+        title: "success!",
+        text: "Expense Added Successfully",
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
       event.target.reset();
     } catch (error) {
       console.error(error.message);
